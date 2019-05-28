@@ -1,0 +1,104 @@
+use Training_20March_CloudChennai;
+
+create table Dinesh_177462.EmployeeLogin
+(EmployeeId int primary key,
+ EmployeeName varchar(30),
+ Password varchar(30),
+ Designation varchar(30),
+ PhoneNumber varchar(30), 
+ EmailID varchar(30), 
+ Address varchar(50), 
+ DrivingLicenseNumber int);
+
+ select * from Dinesh_177462.EmployeeLogin;
+ drop table Dinesh_177462.EmployeeLogin; 
+
+ insert into Dinesh_177462.EmployeeLogin values(11,'Satish','satish@123','Driver','7418529630','satish@gmail.com','Chennai',7419);
+ delete from Dinesh_177462.EmployeeLogin where EmployeeId=11;
+
+ 
+ create table Dinesh_177462.EmployeeRoaster
+ (RosterId int primary key ,
+  Eid int constraint eid_key foreign key(Eid) references Dinesh_177462.EmployeeLogin(Employeeid),
+  FromDate Datetime,
+  ToDate Datetime,
+  InTime Time,
+  OutTime Time);
+  insert into Dinesh_177462.EmployeeRoaster(123,2019-05-27,2019-05-28,8:00,6:00)
+ select * from Dinesh_177462.EmployeeRoaster;
+ drop table Dinesh_177462.EmployeeRoaster;
+
+
+ create table Dinesh_177462.CustomerLogin(
+ CustomerID int primary key , 
+ CustomerName varchar(30),
+ Password varchar(30), 
+ PhoneNumber bigint, 
+ EmailID varchar(20), 
+ Address varchar(20));
+
+ select * from Dinesh_177462.CustomerLogin;
+ drop table Dinesh_177462.CustomerLogin;
+
+ insert into Dinesh_177462.CustomerLogin values(101,'Srazvani','sravs@123',7418529630,'sravani@gmail.com','Hyderabad');
+
+ create table Dinesh_177462.UsersLogin(
+ LoginID int primary key,
+ Password varchar(30), 
+ EidUser int constraint eiduser_fk1 foreign key(EidUser) references Dinesh_177462.EmployeeLogin(Employeeid) , 
+ CustidUser int constraint ciduser_fk2 foreign key(CustidUser) references Dinesh_177462.CustomerLogin(CustomerId) , 
+ Role varchar(30)
+ );
+
+ select * from Dinesh_177462.UsersLogin;
+ drop table Dinesh_177462.UsersLogin;
+
+
+
+
+ create table Dinesh_177462.Taxis(
+ TaxiID int primary key identity, 
+ TaxiModel varchar(30), 
+ Color varchar(20), 
+ RegistrationNumber int , 
+ TaxiType varchar(20));
+
+ select * from Dinesh_177462.Taxis;
+ drop table Dinesh_177462.Taxis;
+
+
+ create table Dinesh_177462.Booking(
+ BookingID int primary key , 
+ CustIdBooking int constraint ciduserbook_fk2 foreign key( CustIdBooking) references Dinesh_177462.CustomerLogin(CustomerId), 
+ TaxiID int constraint taxiid_fk2 foreign key( CustIdBooking) references Dinesh_177462.Taxis(TaxiId), 
+ BookingDate Datetime, 
+ TripDate Datetime, 
+ StartTime Datetime, 
+ EndTime Datetime, 
+ SourceAddress varchar(30), 
+ DestinationAddress varchar(30));    
+ 
+ select * from  Dinesh_177462.Booking;    
+ drop table Dinesh_177462.Booking;  
+
+
+
+ create table Dinesh_177462.Feedback
+ (
+ FeedbackId int primary key identity(1,1),
+ Name varchar(20),
+ Feedback varchar(200),
+ );
+ drop table Dinesh_177462.Feedback
+ select * from Dinesh_177462.Feedback;
+
+ 
+ 
+ 
+  
+
+ 
+ 
+                                                                    
+
+
